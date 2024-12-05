@@ -1,18 +1,14 @@
-from chemlib import Reaction
+from chemlib import Compound
 
-def balance_equation(reactants, products):
+def percentage_composition(formula):
     """
-    Balancea una ecuación química a partir de los reactivos y productos dados.
-
-    :param reactants: Diccionario con los reactivos y sus cantidades iniciales.
-    :param products: Diccionario con los productos y sus cantidades iniciales.
-    :return: Fórmula de la ecuación balanceada.
+    Calcula la composición porcentual en masa de un compuesto.
     """
-    reaction = Reaction(reactants, products)
-    reaction.balance()
-    return reaction.formula
+    compound = Compound(formula)
+    return compound.mass_percent()
 
-reactants = {"CH4": 1, "O2": 2}
-products = {"CO2": 1, "H2O": 2}
-balanced_equation = balance_equation(reactants, products)
-print(f"Ecuación balanceada: {balanced_equation}")
+formula = "C2H5OH"  # Etanol
+percentages = percentage_composition(formula)
+print(f"Composición porcentual en masa de {formula}:")
+for element, percent in percentages.items():
+  print(f"{element}: {percent:.2f}%")
